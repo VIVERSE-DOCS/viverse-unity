@@ -1,0 +1,54 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PlayerBarFusionModern.uss?fileID=7433441132597879392&amp;guid=9b0dc1eeffeda3648927fc64357d8b9a&amp;type=3#PlayerBarFusionModern" />
+    <ui:VisualElement name="indicatorsRoot" class="pi-root" />
+    <ui:VisualElement name="playerBar" class="pm-root">
+        <ui:VisualElement name="p1" class="pm-slot pm-p1">
+            <ui:VisualElement class="pm-card">
+                <ui:VisualElement name="bar" class="pm-topbar" style="border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" />
+                <ui:VisualElement class="pm-text">
+                    <ui:VisualElement class="pm-name-row">
+                        <ui:Label name="p1Prefix" text="P1:" class="pm-prefix" />
+                        <ui:Label name="p1Name" text="MARCUS" class="pm-name" />
+                    </ui:VisualElement>
+                    <ui:Label name="p1Status" text="HOST" class="pm-status" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="p2" class="pm-slot pm-p2">
+            <ui:VisualElement class="pm-card">
+                <ui:VisualElement name="bar" class="pm-topbar" style="border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" />
+                <ui:VisualElement class="pm-text">
+                    <ui:VisualElement class="pm-name-row">
+                        <ui:Label name="p2Prefix" text="P2:" class="pm-prefix" />
+                        <ui:Label name="p2Name" text="CPU" class="pm-name" />
+                    </ui:VisualElement>
+                    <ui:Label name="p2Status" class="pm-status" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="p3" class="pm-slot pm-p3">
+            <ui:VisualElement class="pm-card">
+                <ui:VisualElement name="bar" class="pm-topbar" />
+                <ui:VisualElement class="pm-text">
+                    <ui:VisualElement class="pm-name-row">
+                        <ui:Label name="p3Prefix" text="P3:" class="pm-prefix" />
+                        <ui:Label name="p3Name" text="CPU" class="pm-name" />
+                    </ui:VisualElement>
+                    <ui:Label name="p3Status" class="pm-status" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="p4" class="pm-slot pm-p4">
+            <ui:VisualElement class="pm-card">
+                <ui:VisualElement name="bar" class="pm-topbar" style="border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" />
+                <ui:VisualElement class="pm-text">
+                    <ui:VisualElement class="pm-name-row">
+                        <ui:Label name="p4Prefix" text="P4:" class="pm-prefix" />
+                        <ui:Label name="p4Name" text="CPU" class="pm-name" />
+                    </ui:VisualElement>
+                    <ui:Label name="p4Status" class="pm-status" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

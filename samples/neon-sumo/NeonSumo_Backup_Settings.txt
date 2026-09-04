@@ -1,0 +1,23 @@
+# NeonSumo Game Module Settings - Backup
+# Date: 2025-02-17
+# To restore: copy these values back into NeonSumoMatchmakingFlow.cs InitializeGameModules()
+#
+# PROPERTY REFERENCE (Default | Description)
+# -----------------------------------------
+# ready_time: 3 | Unknown - needs explanation from engineering.
+# start_delay_time: 0.5 | Unknown - needs explanation from engineering.
+# play_time: 30 | Total play duration (seconds) sent to the backend.
+# total_player: 4 | Expected total number of players.
+# change_second: 10 | Unknown - needs explanation from engineering.
+# min_total_player: 2 | Minimum players required to start the game.
+# max_total_player: 4 | Maximum players allowed in the game.
+# wait_player_timeout: 100 | Timeout (seconds) waiting for enough players before giving up.
+
+ready_time = 1
+start_delay_time = 0.5
+play_time = 65
+change_second = 5
+total_player = 4        # from config.maxPlayers
+min_total_player = 2    # from config.minPlayers
+max_total_player = 4    # from config.maxPlayers
+wait_player_timeout = 90

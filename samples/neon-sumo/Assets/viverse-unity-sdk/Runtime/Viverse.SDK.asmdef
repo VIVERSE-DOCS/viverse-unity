@@ -1,0 +1,16 @@
+{
+    "name": "Viverse.SDK",
+    "rootNamespace": "ViverseSDK",
+    "references": [
+        "Viverse.NativeWebSocket"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

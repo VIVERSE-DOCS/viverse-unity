@@ -1,0 +1,20 @@
+.player-row {
+    flex-direction: row;
+    padding: 6px 12px;
+    margin: 2px 6px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.player-name {
+    font-size: 13px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 0.95);
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.player-row.eliminated .player-name {
+    opacity: 0.4;
+}

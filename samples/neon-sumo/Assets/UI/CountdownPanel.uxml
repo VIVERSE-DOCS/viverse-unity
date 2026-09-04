@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/CountdownPanel.uss?fileID=7433441132597879392&amp;guid=1971828eae0e8b243a488c9a7776c7de&amp;type=3#CountdownPanel" />
+    <ui:VisualElement name="countdownRoot" class="countdown-root">
+        <ui:Label name="countdownLabel" text="3" class="countdown-label" />
+    </ui:VisualElement>
+</ui:UXML>

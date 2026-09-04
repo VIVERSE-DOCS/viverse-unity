@@ -1,0 +1,109 @@
+.winner-panel-root {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.winner-panel-content {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    padding: 32px 48px;
+    border-radius: 16px;
+    min-width: 520px;
+    background-color: rgba(20, 20, 20, 0.85);
+    border-width: 3px;
+    border-color: rgb(255, 45, 149);
+    -unity-text-align: middle-center;
+}
+
+.winner-label {
+    font-size: 72px;
+    color: rgba(255, 255, 255, 0.95);
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+
+.winner-subtitle {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.85);
+    -unity-text-align: middle-center;
+    margin-top: 6px;
+}
+
+.winner-restart-button {
+    margin-top: 24px;
+    align-self: stretch;
+    height: 58px;
+    min-width: 280px;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: rgba(255, 255, 255, 0.28);
+    background-color: rgb(255, 45, 149);
+    color: rgb(41, 41, 41);
+    -unity-font-style: bold;
+    font-size: 20px;
+}
+
+.winner-restart-button:hover {
+    background-color: rgb(255, 77, 170);
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+.winner-restart-button:active {
+    background-color: rgb(224, 28, 127);
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+.winner-restart-button:focus {
+    border-width: 5px;
+    border-color: rgba(255, 255, 255, 0.98);
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+.winner-quit-button {
+    margin-top: 12px;
+    align-self: stretch;
+    height: 52px;
+    min-width: 280px;
+    border-radius: 8px;
+    border-width: 3px;
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: transparent;
+    color: rgba(0, 240, 255, 0.54);
+    -unity-font-style: bold;
+    font-size: 18px;
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.winner-quit-button:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: rgb(0, 240, 255);
+    -unity-font-style: bold;
+}
+
+.winner-quit-button:active {
+    -unity-font-style: bold;
+    color: rgba(0, 240, 255, 0.93);
+}
+
+.winner-quit-button:focus {
+    border-width: 5px;
+    border-color: rgba(255, 255, 255, 0.98);
+    -unity-font-style: bold;
+    color: rgb(0, 240, 255);
+}
+
+.winner-action-button--focused {
+    border-width: 6px;
+    border-color: rgb(255, 255, 255);
+}

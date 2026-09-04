@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenuPlayerRow.uss?fileID=7433441132597879392&amp;guid=10057061e8e80894484ca6208589bc31&amp;type=3#MainMenuPlayerRow" />
+    <ui:VisualElement name="playerRowRoot" class="player-row">
+        <ui:Label name="playerNameLabel" text="Player 1: YOU" class="player-name" />
+    </ui:VisualElement>
+</ui:UXML>

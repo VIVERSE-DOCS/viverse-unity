@@ -1,0 +1,27 @@
+{
+    "name": "Viverse.SDK.Sample",
+    "references": [
+        "Viverse.SDK",
+        "Viverse.SDK.Sample.VRM"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.vrmc.vrm",
+            "expression": "0.128.0",
+            "define": "VIVERSE_VRM_INSTALLED"
+        },
+        {
+            "name": "com.vrmc.gltf",
+            "expression": "0.128.0",
+            "define": "VIVERSE_UNIGLTF_INSTALLED"
+        }
+    ],
+    "noEngineReferences": false
+}

@@ -1,0 +1,69 @@
+/* Root bar pinned to bottom, 4 equal slots */
+.player-bar {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+
+    height: 92px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* gap not supported - space-between provides spacing */
+}
+
+/* Each slot (box) */
+.slot {
+    flex-grow: 1;
+
+    border-radius: 12px;
+    border-left-width: 6px;
+    /* border-left-style not supported in USS - borders draw when width+color set */
+
+    background-color: rgba(0, 0, 0, 0.55);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: rgba(255, 255, 255, 0.18);
+    border-right-color: rgba(255, 255, 255, 0.18);
+    border-bottom-color: rgba(255, 255, 255, 0.18);
+
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Header "PLAYER 1" */
+.slot__title {
+    font-size: 12px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 1px;
+}
+
+/* Player name */
+.slot__name {
+    margin-top: 4px;
+    font-size: 20px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 0.98);
+}
+
+/* Optional status line (Ready / Eliminated / Host etc.) */
+.slot__status {
+    margin-top: 2px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.70);
+}
+
+/* Player accent colors (edit these to match your palette) */
+.slot--p1 { border-left-color: rgb(90, 190, 255); }   /* cyan/blue */
+.slot--p2 { border-left-color: rgb(255, 120, 120); }  /* red */
+.slot--p3 { border-left-color: rgb(120, 255, 160); }  /* green */
+.slot--p4 { border-left-color: rgb(255, 215, 90); }    /* yellow */

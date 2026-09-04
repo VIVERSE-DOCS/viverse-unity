@@ -1,0 +1,73 @@
+/* Custom runtime theme - does not import unity-theme://default to avoid
+   "Unknown pseudo class last-child" error (Unity USS does not support :last-child).
+   Uses only supported pseudo-classes: :hover, :active, :focus, :disabled, :enabled, :checked, :root */
+
+/* Import default theme for font definitions (required for text rendering).
+   Override styles below; the import provides -unity-font-definition that our custom USS lacks. */
+@import url("unity-theme://default");
+
+:root {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+Button {
+    min-height: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: rgba(60, 60, 60, 0.9);
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+Button:hover {
+    background-color: rgba(80, 80, 80, 0.95);
+}
+
+Button:active {
+    background-color: rgba(100, 100, 100, 0.95);
+}
+
+Button:disabled {
+    background-color: rgba(50, 50, 50, 0.8);
+    color: rgba(150, 150, 150, 0.8);
+}
+
+Label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+}
+
+TextField {
+    min-height: 24px;
+    padding: 6px 10px;
+    background-color: rgba(30, 30, 30, 0.9);
+    border-radius: 4px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+TextField:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+TextField:focus {
+    border-color: rgba(100, 180, 255, 0.8);
+}
+
+TextField:disabled {
+    background-color: rgba(25, 25, 25, 0.8);
+    color: rgba(120, 120, 120, 0.8);
+}
+
+/* Override default theme's light input background - inner text area of TextField */
+.unity-text-field__input {
+    background-color: rgba(30, 30, 30, 0.9);
+    color: rgba(255, 255, 255, 0.95);
+    padding-top: 0;
+    padding-bottom: 0;
+    -unity-text-align: middle-left;
+}

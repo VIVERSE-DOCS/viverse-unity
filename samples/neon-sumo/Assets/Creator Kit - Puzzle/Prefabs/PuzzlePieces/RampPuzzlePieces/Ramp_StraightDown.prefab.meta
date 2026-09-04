@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fb48213b52699c54aa17581bde073f80
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 149311
+  packageName: 'Unity Learn | Creator Kit: Puzzle | URP'
+  packageVersion: 3.1
+  assetPath: Assets/Creator Kit - Puzzle/Prefabs/PuzzlePieces/RampPuzzlePieces/Ramp_StraightDown.prefab
+  uploadId: 690891

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | {{{ PRODUCT_NAME }}}</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <script src="TemplateData/profiler.js"></script>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      /* Keep WebGL below HTML overlays (Silk / Android TV often composites canvas on top otherwise). */
+      #unity-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        isolation: isolate;
+      }
+      #unity-container.unity-mobile {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .unity-mobile #unity-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      #unity-canvas {
+        background: #231F20;
+        position: relative;
+        z-index: 0;
+      }
+      #unity-loading-bar {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        z-index: 2;
+      }
+      #unity-logo {
+        width: 154px;
+        height: 130px;
+        background: url('TemplateData/unity-logo-dark.png') no-repeat center;
+      }
+      #unity-progress-bar-empty {
+        width: 141px;
+        height: 18px;
+        margin-top: 10px;
+        margin-left: 6.5px;
+        background: url('TemplateData/progress-bar-empty-dark.png') no-repeat center;
+      }
+      #unity-progress-bar-full {
+        width: 0%;
+        height: 18px;
+        margin-top: 10px;
+        background: url('TemplateData/progress-bar-full-dark.png') no-repeat center;
+      }
+      #unity-warning {
+        position: absolute;
+        left: 50%;
+        top: 5%;
+        transform: translate(-50%);
+        background: white;
+        padding: 10px;
+        display: none;
+        z-index: 100001;
+        max-width: 90%;
+      }
+      /* Hidden by default (top metrics strip). Append ?showMetrics=1 to URL to show. */
+      #firetv-metrics-strip {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 99999;
+        padding: 6px 12px;
+        font: 13px/1.35 Consolas, "Segoe UI Mono", monospace;
+        color: #e8e8e8;
+        background: rgba(0, 0, 0, 0.78);
+        pointer-events: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+      }
+      #firetv-metrics-strip.firetv-metrics-visible {
+        display: block;
+      }
+      /* Hidden by default on TV; add ?debugChrome=1 to show Fullscreen / Profiler / Unload. */
+      #firetv-debug-bar {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100001;
+        padding: 8px 10px;
+        font: 14px Arial, Helvetica, sans-serif;
+        background: rgba(0, 0, 0, 0.82);
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        box-sizing: border-box;
+      }
+      #firetv-debug-bar.firetv-debug-bar-visible {
+        display: flex;
+      }
+      #firetv-debug-bar .firetv-product-name {
+        color: #ccc;
+        margin-right: 6px;
+        font-weight: 600;
+      }
+      #firetv-debug-bar button {
+        min-height: 36px;
+        min-width: 44px;
+        padding: 6px 12px;
+        font: inherit;
+        cursor: pointer;
+        border: 1px solid #666;
+        background: #444;
+        color: #eee;
+        border-radius: 4px;
+      }
+      #firetv-debug-bar button:focus {
+        outline: 2px solid #8cf;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--FIRETV_PRESET_BEGIN-->
+    <!--FIRETV_PRESET_END-->
+    <script>
+    (function () {
+      var q = typeof window.__UNITY_FIRETV_TEST_QUERY__ === "string" ? window.__UNITY_FIRETV_TEST_QUERY__ : "";
+      if (!q) return;
+      try {
+        var cur = new URLSearchParams(window.location.search);
+        var add = new URLSearchParams(q);
+        var changed = false;
+        add.forEach(function (v, k) {
+          if (!cur.has(k)) {
+            cur.set(k, v);
+            changed = true;
+          }
+        });
+        if (!changed) return;
+        var s = cur.toString();
+        if (s) history.replaceState(null, "", location.pathname + (s ? "?" + s : "") + location.hash);
+      } catch (e0) {}
+    })();
+    </script>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+    </div>
+    <div id="firetv-metrics-strip" aria-hidden="true"></div>
+    <div id="firetv-debug-bar">
+      <span class="firetv-product-name">{{{ PRODUCT_NAME }}}</span>
+      <button type="button" id="firetv-fullscreen-btn">Fullscreen</button>
+      <span id="firetv-profiler-slot"></span>
+      <button type="button" id="firetv-unload-btn">Unload</button>
+    </div>
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var warningBanner = document.querySelector("#unity-warning");
+      var metricsStrip = document.getElementById("firetv-metrics-strip");
+      var debugBar = document.getElementById("firetv-debug-bar");
+      var params = { showMetrics: false, debugChrome: false, dprOverride: null };
+      try {
+        var sp = new URLSearchParams(window.location.search);
+        params.showMetrics = sp.get("showMetrics") === "1";
+        params.debugChrome = sp.get("debugChrome") === "1";
+        var dprStr = sp.get("dpr");
+        if (dprStr !== null && dprStr !== "") {
+          var dprNum = parseFloat(dprStr);
+          if (isFinite(dprNum) && dprNum > 0) params.dprOverride = dprNum;
+        }
+      } catch (e) {}
+      if (params.showMetrics && metricsStrip) {
+        metricsStrip.classList.add("firetv-metrics-visible");
+      }
+      if (params.debugChrome && debugBar) {
+        debugBar.classList.add("firetv-debug-bar-visible");
+      }
+
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
+        }
+        var div = document.createElement('div');
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        else {
+          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+        updateBannerVisibility();
+      }
+
+      function updateMetricsStrip() {
+        if (!metricsStrip || !canvas) return;
+        var cw = canvas.clientWidth | 0;
+        var ch = canvas.clientHeight | 0;
+        var bw = canvas.width;
+        var bh = canvas.height;
+        var windDpr = window.devicePixelRatio || 1;
+        var unityDpr = (typeof window.__firetvUnityDevicePixelRatio === "number" && isFinite(window.__firetvUnityDevicePixelRatio))
+          ? window.__firetvUnityDevicePixelRatio
+          : null;
+        var dprLine = 'window DPR: ' + windDpr.toFixed(2);
+        if (unityDpr !== null) dprLine += ' | Unity DPR: ' + unityDpr.toFixed(2);
+        metricsStrip.textContent =
+          'Display: ' + cw + '\u00d7' + ch +
+          ' | Canvas: ' + bw + '\u00d7' + bh +
+          ' | ' + dprLine;
+      }
+
+      var __firetvMetricsLoopStarted = false;
+      function startMetricsUpdates() {
+        if (__firetvMetricsLoopStarted) {
+          updateMetricsStrip();
+          return;
+        }
+        __firetvMetricsLoopStarted = true;
+        updateMetricsStrip();
+        window.addEventListener('resize', updateMetricsStrip);
+        if (typeof ResizeObserver !== 'undefined') {
+          try {
+            var ro = new ResizeObserver(updateMetricsStrip);
+            ro.observe(canvas);
+          } catch (e) {}
+        }
+        setInterval(updateMetricsStrip, 400);
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
+        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
+        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
+#if MEMORY_FILENAME
+        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
+#endif
+#if SYMBOLS_FILENAME
+        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
+#endif
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "{{{ COMPANY_NAME }}}",
+        productName: "{{{ PRODUCT_NAME }}}",
+        productVersion: "{{{ PRODUCT_VERSION }}}",
+        showBanner: unityShowBanner,
+      };
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        container.className = "unity-mobile";
+        canvas.className = "unity-mobile";
+        config.devicePixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+      } else {
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+      }
+
+      if (params.dprOverride !== null) {
+        config.devicePixelRatio = params.dprOverride;
+      }
+      try {
+        window.__firetvUnityDevicePixelRatio = (config.devicePixelRatio !== undefined && config.devicePixelRatio !== null)
+          ? config.devicePixelRatio
+          : null;
+      } catch (eU) {}
+
+      loadingBar.style.display = "block";
+      if (params.showMetrics) {
+        startMetricsUpdates();
+      }
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+
+          document.getElementById("firetv-fullscreen-btn").onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+
+          var profilerSlot = document.getElementById("firetv-profiler-slot");
+          var profile = unityProfiler.createButton(unityInstance);
+          if (profile && profilerSlot) profilerSlot.appendChild(profile);
+
+          document.getElementById("firetv-unload-btn").onclick = () => {
+            unityInstance.Quit().then(() => {
+              unityProfiler.shutDown();
+              document.querySelector("#unity-container").remove();
+              document.getElementById("firetv-metrics-strip").remove();
+              document.getElementById("firetv-debug-bar").remove();
+              canvas = null;
+              script.remove();
+              script = null;
+            });
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

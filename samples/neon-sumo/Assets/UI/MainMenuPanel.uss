@@ -1,0 +1,128 @@
+.main-menu-root {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    background-color: rgba(0, 0, 0, 0.6);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.connection-status {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 12px;
+    -unity-text-align: middle-center;
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.player-list-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.wins-counter {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 20px;
+    -unity-font-style: bold;
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.button-row {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 840px;
+}
+
+.button-row > * {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.menu-button {
+    flex-grow: 1;
+    flex-basis: 200px;
+    min-width: 200px;
+    max-width: 360px;
+    height: 54px;
+    font-size: 17px;
+    -unity-font-style: bold;
+    background-color: rgba(120, 120, 120, 0.62);
+    border-width: 0;
+    border-radius: 0;
+    border-left-width: 5px;
+    border-left-color: rgba(120, 120, 120, 0.62);
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.menu-button:focus {
+    border-width: 0;
+    border-left-width: 5px;
+}
+
+.menu-button--focused {
+    border-width: 0;
+    border-left-width: 5px;
+}
+
+.menu-button:disabled:focus {
+    border-width: 0;
+    border-left-width: 5px;
+    border-left-color: rgba(70, 70, 70, 0.85);
+}
+
+.menu-button:disabled {
+    background-color: rgba(70, 70, 70, 0.85);
+    border-left-color: rgba(70, 70, 70, 0.85);
+    color: rgb(0, 0, 0);
+}
+
+.menu-button--focused:disabled {
+    border-width: 0;
+    border-left-width: 5px;
+    border-left-color: rgba(70, 70, 70, 0.85);
+}
+
+.ready-button {
+}
+
+.ready-button:hover,
+.ready-button:focus,
+.ready-button.menu-button--focused {
+    border-color: rgba(156, 255, 140, 1);
+    border-left-color: rgba(57, 255, 20, 0.95);
+}
+
+.ready-button:disabled {
+    color: rgb(0, 0, 0);
+}
+
+.restart-button {
+}
+
+.restart-button:hover,
+.restart-button:focus,
+.restart-button.menu-button--focused {
+    border-left-color: rgba(0, 240, 255, 0.95);
+}
+
+.quit-button {
+}
+
+.quit-button:hover,
+.quit-button:focus,
+.quit-button.menu-button--focused {
+    border-left-color: rgba(255, 0, 122, 0.95);
+}

@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/PlayerBar.uss?fileID=7433441132597879392&amp;guid=27558e9176dacf340a2711a1137b3b39&amp;type=3#PlayerBar" />
+    <ui:VisualElement name="player-bar" class="player-bar">
+        <ui:VisualElement name="slot-1" class="slot slot--p1">
+            <ui:Label name="slot-1-title" text="PLAYER 1" class="slot__title" />
+            <ui:Label name="slot-1-name" text="—" class="slot__name" />
+            <ui:Label name="slot-1-status" class="slot__status" />
+        </ui:VisualElement>
+        <ui:VisualElement name="slot-2" class="slot slot--p2">
+            <ui:Label name="slot-2-title" text="PLAYER 2" class="slot__title" />
+            <ui:Label name="slot-2-name" text="—" class="slot__name" />
+            <ui:Label name="slot-2-status" class="slot__status" />
+        </ui:VisualElement>
+        <ui:VisualElement name="slot-3" class="slot slot--p3">
+            <ui:Label name="slot-3-title" text="PLAYER 3" class="slot__title" />
+            <ui:Label name="slot-3-name" text="—" class="slot__name" />
+            <ui:Label name="slot-3-status" class="slot__status" />
+        </ui:VisualElement>
+        <ui:VisualElement name="slot-4" class="slot slot--p4">
+            <ui:Label name="slot-4-title" text="PLAYER 4" class="slot__title" />
+            <ui:Label name="slot-4-name" text="—" class="slot__name" />
+            <ui:Label name="slot-4-status" class="slot__status" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

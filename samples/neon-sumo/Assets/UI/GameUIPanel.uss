@@ -1,0 +1,30 @@
+/* Game UI panel - timer HUD; non-interactive so it does not block other UI */
+/* Note: picking-mode must be set via C# (VisualElement.pickingMode) - not supported in USS */
+
+.game-ui-root {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+    background-color: transparent;
+}
+
+.game-ui-timer {
+    font-size: 48px;
+    color: rgba(255, 154, 0, 1);
+    -unity-font-style: bold;
+    -unity-text-align: upper-left;
+}
+
+.game-ui-error {
+    font-size: 24px;
+    color: rgba(255, 100, 100, 1);
+    -unity-text-align: upper-left;
+    margin-top: 8px;
+    display: none;
+}

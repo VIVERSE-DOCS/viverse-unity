@@ -1,0 +1,10 @@
+1. WebGL/Viverse: game readiness events (OnWaitForPlayer/OnPlayerAllReady/OnMasterNotify) were not forwarded in the JS bridge, and not routed in ReceiveMessageFromJS.
+
+2. WebGL/Viverse: onMasterNotify fires with valid master_user, but MultiplayerClient.IsMasterUser() returns false. Result: no master-driven actions (spawn, game start, ramp sync). Workaround needed to trust master_user == PeerId in game logic.
+
+GAME MODULE – COUNTDOWN TIMER (KNOWN BEHAVIOR)
+  - Event we send: Game.TriggerGameStart() → countdown_to_start
+  - Event we receive: OnCountdownToEnd → countdown_to_end (second: 60, 59, 58...)
+  - Delay: ~5–6s (Editor) / ~8–9s (WebGL) from send to first receive
+  - Workaround: Send countdown_to_start at intro start so warm-up overlaps with 3-2-1-Go
+		

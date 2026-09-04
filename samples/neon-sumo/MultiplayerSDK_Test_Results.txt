@@ -1,0 +1,129 @@
+VIVERSE SDK TEST RESULTS
+
+Test Date: 1/22/2026
+Tester: Marcus Nixon
+SDK Version: [version]
+App ID: [app-id]
+Game Session/Room: [room-id if applicable]
+Matchmaking Mode: Room Creation
+Multiplayer Modules Enabled: [Game / NetworkSync / ActionSync / Leaderboard]
+
+================================================================================
+TEST RESULTS
+================================================================================
+
+MATCHMAKING API
+                     Unity Editor     WebGL (Local)        Windows (Local)        WebGL (Viverse)
+-------------------------------------------------------------------------------------
+Connect              [x]              [x]                  [x]                    [x]
+Disconnect           [x]              [x]                  [x]                    [x]
+Set Actor            [x]              [x]                  [x]                    [x]
+Set Actor Properties [x]              [x]                  [x]                    [x]
+Set Team Role        [x]              [x]                  [x]                    [x]
+Get Room List        [x]              [x]                  [x]                    [x]
+Create Room          [x]              [x]                  [x]                    [x]
+Join Room            [x]              [x]                  [x]                    [x]
+Leave Room           [x]              [x]                  [x]                    [x]
+Close Room (Master)  [x]              [x]                  [x]                    [x]
+Get Room Actors      [x]              [x]                  [x]                    [x]
+Set Room Properties  [x]              [x]                  [x]                    [x]
+Start Game (Master)  [x]              [x]                  [x]                    [x]
+Room List Update     [x]              [x]                  [x]                    [x]
+Room Actor Change    [x]              [x]                  [x]                    [x]
+Room Closed Notify   [x]              [x]                  [x]                    [x]
+Game Start Notify    [x]              [x]                  [x]                    [x]
+
+MULTIPLAYER API (CONNECTION / GENERAL)
+                     Unity Editor     WebGL (Local)        Windows (Local)        WebGL (Viverse)
+-------------------------------------------------------------------------------------
+Initialize/Connect   [Fail]           [Fail]               [Fail]                 [Fail]
+Disconnect           [x]              [x]                  [x]                    [x]
+Send Chat Message    [x]              [x]                  [x]                    [x]
+Receive Chat Message [x]              [x]                  [x]                    [x]
+OnClientConnected    [x]              [x]                  [x]                    [x]
+OnClientDisconnected [x]              [x]                  [x]                    [x]
+
+NETWORK SYNC MODULE
+                     Unity Editor     WebGL (Local)        Windows (Local)        WebGL (Viverse)
+-------------------------------------------------------------------------------------
+Update My Position   [x]              [x]                  [x]                    [x]
+Update Entity Pos    [x]              [x]                  [x]                    [x]
+Notify Position      [x]              [x]                  [x]                    [x]
+Notify Remove        [Unable to test] [Unable to test]     [Unable to test]       [Unable to test]
+
+ACTION SYNC MODULE
+                     Unity Editor     WebGL (Local)        Windows (Local)        WebGL (Viverse)
+-------------------------------------------------------------------------------------
+Send Competition     [x]              [x]                  [x]                    [x]
+OnCompetition Notify [x]              [x]                  [x]                    [x]
+
+LEADERBOARD MODULE
+                     Unity Editor     WebGL (Local)        Windows (Local)        WebGL (Viverse)
+-------------------------------------------------------------------------------------
+Update Score         [x]              [x]                  [x]                    [x]
+OnLeaderboardUpdate  [x]              [x]                  [x]                    [x]
+
+GAME MODULE
+                     Unity Editor     WebGL (Local)        Windows (Local)        WebGL (Viverse)
+-------------------------------------------------------------------------------------
+Trigger Game Start   [x]              [x]                  [x]                    [x]
+Trigger Game End     [x]              [x]                  [x]                    [x]
+Trigger Game Update  [x]              [x]                  [x]                    [x]
+Trigger Game Restart [x]              [x]                  [x]                    [x]
+Get Room Info        [x]              [x]                  [x]                    [x]
+OnCountdownToStart   [x]              [x]                  [x]                    [x]
+OnCountdownToEnd     [x]              [x]                  [x]                    [x]
+OnGameTimeUp         [x]              [x]                  [x]                    [x]
+OnGameEnd            [x]              [x]                  [x]                    [x]
+OnErrorNotify        [x]              [x]                  [x]                    [x]
+OnPlayerAllReady     [Unable to test] [Unable to test]     [Unable to test]       [Unable to test]
+OnWaitForPlayer      [Unable to test] [Unable to test]     [Unable to test]       [Unable to test]
+OnMasterNotify       [Unable to test] [Unable to test]     [Unable to test]       [Unable to test]
+OnPlayerOverLimit    [x]              [x]                  [x]                    [x]
+
+================================================================================
+ERROR MESSAGES / NOTES
+================================================================================
+
+1. MatchmakingDemoScene: Start Game is disabled after closing the room; cannot start game when room is closed to new players. Is this the intended logic?
+2. Disconnect button missing in MatchmakingDemoScene UI.
+3. Get Room Actors button never enables in MatchmakingDemoScene.
+4. MultiplayerDemoScene: disconnecting and reconnecting in-scene fails; reconnect requires page refresh.
+5. MultiplayerDemoScene: no apparent way to trigger Notify Remove from the demo UI.
+6. MultiplayerDemoScene: no apparent way to trigger OnPlayerAllReady from the demo UI.
+7. MultiplayerDemoScene: no apparent way to trigger OnWaitForPlayer from the demo UI.
+8. MultiplayerDemoScene: no apparent way to trigger OnMasterNotify from the demo UI.
+
+================================================================================
+SDK INTEGRATION ISSUES (BUILD / GAME)
+================================================================================
+
+1. WebGL/Viverse: game readiness events (OnWaitForPlayer/OnPlayerAllReady/OnMasterNotify) were not forwarded in the JS bridge, and not routed in ReceiveMessageFromJS. Result: WebGL builds can stall at "Waiting for players" even when both clients click Ready. Added bridge + C# routing to align WebGL with Editor behavior.
+2. WebGL/Viverse: onMasterNotify fires with valid master_user, but MultiplayerClient.IsMasterUser() returns false. Result: no master-driven actions (spawn, game start, ramp sync). Workaround needed to trust master_user == PeerId in game logic.
+
+================================================================================
+GAME MODULE – COUNTDOWN TIMER (KNOWN BEHAVIOR)
+================================================================================
+
+The game timer is driven by the backend. The client sends a start signal and receives
+countdown ticks. There is a backend warm-up delay between send and first receive.
+
+Event we send:
+  - Game.TriggerGameStart() → sends countdown_to_start to backend
+  - Payload: { type: "game", event: "countdown_to_start", user_id: "..." }
+  - When: At intro start (when spawning/ready flow triggers game start)
+
+Event we receive:
+  - OnCountdownToEnd → game/onCountdownToEnd from backend
+  - Payload: { second: 60 }, then 59, 58, 57... every second
+  - Handler: HandleCountdownToEnd → uiManager.ShowEndCountdown(seconds)
+
+Delay (measured):
+  - ~5–6 seconds (Editor/Windows): First countdown_to_end arrives 5–6 seconds after
+    countdown_to_start is sent.
+  - ~8–9 seconds (WebGL/Viverse): Can be longer in WebGL builds.
+
+Workaround: Send countdown_to_start at intro start (e.g. when spawn ACKs are ready)
+so backend warm-up overlaps with 3-2-1-Go. First tick then arrives around or shortly
+after "Go!".
+

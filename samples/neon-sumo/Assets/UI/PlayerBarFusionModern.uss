@@ -1,0 +1,175 @@
+.pm-root {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 58px;
+    display: flex;
+    flex-direction: row;
+    border-left-color: rgba(0, 240, 255, 0.07);
+    border-right-color: rgba(0, 240, 255, 0.07);
+    border-top-color: rgba(0, 240, 255, 0.07);
+    border-bottom-color: rgba(0, 240, 255, 0.07);
+    border-top-width: 2px;
+}
+
+.pm-root > * {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.pm-slot {
+    flex-grow: 1;
+    position: relative;
+}
+
+.pm-topbar {
+    position: absolute;
+    top: auto;
+    left: 14px;
+    right: 14px;
+    height: 10px;
+    border-radius: 999px;
+    opacity: 0.9;
+    bottom: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.pm-card {
+    position: relative;
+    height: 86px;
+    border-radius: 18px;
+    background-color: rgba(15, 15, 20, 0.85);
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 22px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    padding-bottom: 30px;
+}
+
+.pm-text {
+    margin-left: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pm-name-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pm-prefix {
+    font-size: 14px;
+    -unity-font-style: bold;
+    margin-right: 6px;
+    color: rgba(255, 255, 255, 0.95);
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.pm-name {
+    font-size: 14px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 0.97);
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.pm-status {
+    margin-left: auto;
+    font-size: 12px;
+    -unity-font-style: normal;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    -unity-font-definition: url("project://database/Assets/Fonts/Roboto-VariableFont_wdth,wght.ttf?fileID=12800000&guid=7cbd1dc33f557c5409e6974b3a068d15&type=3#Roboto-VariableFont_wdth,wght");
+}
+
+.pm-p1 .pm-topbar {
+    background-color: rgb(60, 220, 100);
+}
+
+.pm-p1 .pm-prefix {
+    color: rgb(80, 255, 120);
+}
+
+.pm-p2 .pm-topbar {
+    background-color: rgb(250, 210, 60);
+    bottom: 5px;
+    position: absolute;
+    left: 14px;
+    right: 14px;
+}
+
+.pm-p2 .pm-prefix {
+    color: rgb(255, 235, 120);
+}
+
+.pm-p3 .pm-topbar {
+    background-color: rgb(255, 140, 190);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.pm-p3 .pm-prefix {
+    color: rgb(255, 180, 215);
+}
+
+.pm-p4 .pm-topbar {
+    background-color: rgb(255, 140, 60);
+}
+
+.pm-p4 .pm-prefix {
+    color: rgb(255, 180, 120);
+}
+
+.pi-root {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.pi-indicator {
+    position: absolute;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pi-label {
+    font-size: 52px;
+    -unity-font-style: bold;
+    color: rgba(255, 255, 255, 0.97);
+    -unity-text-outline-width: 4px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+}
+
+.pi-triangle {
+    width: 0;
+    height: 0;
+    border-left-width: 32px;
+    border-right-width: 32px;
+    border-top-width: 48px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: white;
+    margin-top: 8px;
+}

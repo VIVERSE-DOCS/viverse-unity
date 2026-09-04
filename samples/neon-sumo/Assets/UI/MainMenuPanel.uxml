@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenuPanel.uss?fileID=7433441132597879392&amp;guid=b1d6ac78332b10942bdd85faab3fc1f1&amp;type=3#MainMenuPanel" />
+    <ui:VisualElement name="mainMenuRoot" class="main-menu-root">
+        <ui:Label name="connectionStatusText" text="Connecting to multiplayer services…" class="connection-status" />
+        <ui:Label name="winsCounterText" text="Wins: 0" class="wins-counter" />
+        <ui:VisualElement name="lobbyActionsRow" class="button-row">
+            <ui:Button name="readyButton" text="Connecting..." class="menu-button ready-button" />
+            <ui:Button name="restartButton" text="Restart" class="menu-button restart-button" />
+            <ui:Button name="quitButton" text="Quit" class="menu-button quit-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
