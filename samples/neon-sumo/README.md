@@ -1,5 +1,7 @@
 # Neon Sumo sample
 
+![Neon Sumo gameplay](Neon_Sumo_Screenshot.png)
+
 A Unity multiplayer demo showcasing the **VIVERSE Unity SDK**. This project walks through the full lifecycle of a multiplayer game—from lobby matchmaking to gameplay sync—and how each SDK module is used to solve real problems.
 
 **Target audience:** Game developers building multiplayer games in Unity who are new to the VIVERSE Unity SDK or need guidance on how to apply it.
