@@ -1,0 +1,331 @@
+{
+  "routes": [
+    {
+      "intent": [
+        "collider",
+        "collision",
+        "hitbox",
+        "physics",
+        "rigidbody",
+        "boundary",
+        "raycaster",
+        "intersect"
+      ],
+      "skills": [
+        "threejs-collision-patterns"
+      ]
+    },
+    {
+      "intent": [
+        "racing",
+        "race car",
+        "cpu driver",
+        "waypoint",
+        "lap",
+        "vehicle ai",
+        "driving ai",
+        "track loop",
+        "recovery",
+        "hairpin"
+      ],
+      "skills": [
+        "threejs-racing-ai-driver"
+      ]
+    },
+    {
+      "intent": [
+        "auth",
+        "login",
+        "sso",
+        "checkauth",
+        "profile",
+        "identity"
+      ],
+      "skills": [
+        "viverse-auth"
+      ]
+    },
+    {
+      "intent": [
+        "avatar",
+        "glb",
+        "vrm",
+        "character"
+      ],
+      "skills": [
+        "viverse-avatar-sdk"
+      ]
+    },
+    {
+      "intent": [
+        "matchmaking",
+        "room",
+        "rooms",
+        "multiplayer",
+        "session",
+        "setactor"
+      ],
+      "skills": [
+        "viverse-multiplayer"
+      ]
+    },
+    {
+      "intent": [
+        "leaderboard",
+        "score",
+        "ranking",
+        "rank"
+      ],
+      "skills": [
+        "viverse-leaderboard"
+      ]
+    },
+    {
+      "intent": [
+        "publish",
+        "deployment",
+        "deploy",
+        "app id",
+        "viverse-cli"
+      ],
+      "skills": [
+        "viverse-world-publishing"
+      ]
+    },
+    {
+      "intent": [
+        "lambda",
+        "secret",
+        "apikey",
+        "proxy",
+        "backend boundary"
+      ],
+      "skills": [
+        "viverse-key-protection-lambda"
+      ]
+    },
+    {
+      "intent": [
+        "template",
+        "contract",
+        "certification",
+        "template generation"
+      ],
+      "skills": [
+        "viverse-template-generation"
+      ]
+    },
+    {
+      "intent": [
+        "r3f",
+        "react three fiber",
+        "three fiber",
+        "@react-three/viverse"
+      ],
+      "skills": [
+        "viverse-r3f-foundation"
+      ]
+    },
+    {
+      "intent": [
+        "profile ui",
+        "nametag",
+        "hud",
+        "profile badge"
+      ],
+      "skills": [
+        "viverse-r3f-profile-ui"
+      ]
+    },
+    {
+      "intent": [
+        "threejs",
+        "vanilla three",
+        "non-react three"
+      ],
+      "skills": [
+        "viverse-threejs-vanilla-foundation"
+      ]
+    },
+    {
+      "intent": [
+        "navigation",
+        "ammo",
+        "character controller"
+      ],
+      "skills": [
+        "playcanvas-avatar-navigation"
+      ]
+    },
+    {
+      "intent": [
+        "googlemaps",
+        "3dtiles",
+        "map tiles"
+      ],
+      "skills": [
+        "playcanvas-googlemaps-3dtiles"
+      ]
+    },
+    {
+      "intent": [
+        "vrma",
+        "animation retargeting",
+        "retarget"
+      ],
+      "skills": [
+        "vrma-animation-retargeting"
+      ]
+    },
+    {
+      "intent": [
+        "ui",
+        "design system",
+        "visual polish",
+        "premium dashboard"
+      ],
+      "skills": [
+        "viverse-design-system"
+      ]
+    },
+    {
+      "intent": [
+        "polygon streaming runtime",
+        "streamcontroller",
+        "xrg loading",
+        "model-load",
+        "model-load-error",
+        "basis transcoder",
+        "service-worker.js",
+        "threejs polygon streaming",
+        "runtime streaming",
+        "streamed model invisible"
+      ],
+      "skills": [
+        "viverse-polygon-streaming-threejs"
+      ]
+    },
+    {
+      "intent": [
+        "polygon streaming",
+        "pls-cli",
+        "glb convert",
+        "3d streaming",
+        "asset upload"
+      ],
+      "skills": [
+        "viverse-pls-cli"
+      ]
+    },
+    {
+      "intent": [
+        "texture",
+        "image",
+        "sprite",
+        "symbol",
+        "overlay",
+        "icon",
+        "asset swap",
+        "replace image",
+        "block texture",
+        "cell texture",
+        "shapetype",
+        "shape type",
+        "block shape",
+        "bird",
+        "fire",
+        "animal",
+        "emoji",
+        "logo",
+        "fetch image",
+        "custom image"
+      ],
+      "skills": [
+        "playcanvas-asset-art"
+      ]
+    },
+    {
+      "intent": [
+        "i18n",
+        "localization",
+        "language detection",
+        "lang",
+        "translation",
+        "_htc_lang_code"
+      ],
+      "skills": [
+        "viverse-i18n"
+      ]
+    },
+    {
+      "intent": [
+        "storage",
+        "cloud save",
+        "save data",
+        "save game",
+        "persistence",
+        "cloudsaveclient"
+      ],
+      "skills": [
+        "viverse-storage"
+      ]
+    },
+    {
+      "intent": [
+        "utility app",
+        "tool app",
+        "widget",
+        "iframe tool",
+        "blank-webapp",
+        "poll",
+        "countdown",
+        "ticker"
+      ],
+      "skills": [
+        "viverse-utility-app"
+      ]
+    },
+    {
+      "intent": [
+        "weapon attach",
+        "weapon grip",
+        "hand bone",
+        "prop attach",
+        "grip pose",
+        "finger curl"
+      ],
+      "skills": [
+        "vrm-weapon-attach"
+      ]
+    },
+    {
+      "intent": [
+        "material override",
+        "model swap",
+        "procedural decoration",
+        "glb material",
+        "gltfloader",
+        "bloom",
+        "tone mapping",
+        "post-processing"
+      ],
+      "skills": [
+        "threejs-asset-art"
+      ]
+    },
+    {
+      "intent": [
+        "racing ai",
+        "cpu driver",
+        "ai driver",
+        "waypoint",
+        "lap progress",
+        "race recovery",
+        "racing debug"
+      ],
+      "skills": [
+        "threejs-racing-ai-driver"
+      ]
+    }
+  ]
+}
