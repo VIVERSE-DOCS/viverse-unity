@@ -1,0 +1,37 @@
+{
+  "id": "viverse-key-protection-lambda",
+  "name": "viverse-key-protection-lambda",
+  "version": "0.1.0",
+  "status": "active",
+  "description": "Protect third-party API keys by moving secret-bearing calls into VIVERSE Play Lambda scripts and keeping only non-secret user data in VIVERSE Storage.",
+  "tags": [
+    "viverse",
+    "lambda",
+    "storage",
+    "secrets",
+    "security",
+    "api-key"
+  ],
+  "prerequisites": [
+    "VIVERSE Play SDK access token flow",
+    "Play Lambda Service authkey + game_id",
+    "event_name contract",
+    "VIVERSE Storage SDK"
+  ],
+  "entrypoint": "SKILL.md",
+  "rules": "rules.json",
+  "patterns_dir": "patterns",
+  "examples_dir": "examples",
+  "read_order": [
+    "SKILL.md",
+    "patterns/lambda-api-reference.md",
+    "patterns/lambda-secret-proxy.md",
+    "patterns/storage-boundary.md",
+    "examples/voxel-landmark-migration.md",
+    "scripts/sync-lambda-config.sh",
+    "templates/.env.lambda.example"
+  ],
+  "dependencies": [
+    "bundle:resilience"
+  ]
+}
