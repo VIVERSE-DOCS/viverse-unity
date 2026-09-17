@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "intent": ["auth", "login", "oauth", "sso", "checkauth", "profile"],
+      "skills": ["viverse-unity-auth"]
+    },
+    {
+      "intent": ["avatar", "vrm", "univrm", "character", "profile-avatar"],
+      "skills": ["viverse-unity-avatar"]
+    },
+    {
+      "intent": ["cloud save", "cloudsave", "player data", "persistence", "storage"],
+      "skills": ["viverse-unity-cloudsave"]
+    },
+    {
+      "intent": ["leaderboard", "score", "ranking", "rank"],
+      "skills": ["viverse-unity-leaderboard"]
+    },
+    {
+      "intent": ["lambda", "server function", "backend function", "rest invoke"],
+      "skills": ["viverse-unity-lambda"]
+    },
+    {
+      "intent": ["matchmaking", "room", "rooms", "actor", "session"],
+      "skills": ["viverse-unity-matchmaking"]
+    },
+    {
+      "intent": ["multiplayer", "play sdk", "data channel", "webrtc", "master client"],
+      "skills": ["viverse-unity-multiplayer"]
+    },
+    {
+      "intent": ["game module", "game lifecycle", "ready", "countdown", "start", "restart"],
+      "skills": ["viverse-unity-game-module"]
+    },
+    {
+      "intent": ["network sync", "transform sync", "position sync", "per-frame sync"],
+      "skills": ["viverse-unity-network-sync"]
+    },
+    {
+      "intent": ["action sync", "ability broadcast", "attack broadcast", "emote broadcast"],
+      "skills": ["viverse-unity-action-sync"]
+    },
+    {
+      "intent": ["in-room leaderboard", "ephemeral score", "realtime score"],
+      "skills": ["viverse-unity-leaderboard-module"]
+    },
+    {
+      "intent": ["general message", "freeform message", "peer event", "connection event"],
+      "skills": ["viverse-unity-general-module"]
+    }
+  ]
+}
