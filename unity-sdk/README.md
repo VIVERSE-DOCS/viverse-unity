@@ -1,6 +1,6 @@
 # Getting started with the VIVERSE Unity SDK
 
-Ship VIVERSE-connected Unity games to WebGL and iterate them in the Editor with the same C# API. This guide walks you through installing the SDK, authenticating a player, and calling every feature the SDK exposes — authentication, Lambda functions, matchmaking, real-time multiplayer, cloud save, leaderboards, achievements, and avatars.
+Ship VIVERSE-connected Unity games to WebGL and iterate them in the Editor with the same C# API. Call the C# API in this guide. Do not write a `.jslib` for authentication, cloud save, multiplayer, leaderboards, profiles, or avatars. This guide walks you through installing the SDK, authenticating a player, and calling every feature the SDK exposes — authentication, Lambda functions, matchmaking, real-time multiplayer, cloud save, leaderboards, achievements, and avatars.
 
 ---
 
